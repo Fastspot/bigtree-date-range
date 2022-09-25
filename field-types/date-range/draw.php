@@ -1,13 +1,18 @@
 <?php
+	/**
+	 * @global array $bigtree
+	 * @global array $field
+	 */
+	
 	$display_value = "";
 
-	if (!is_array($field["value"])) {
-		$field["value"] = array("start" => "", "end" => "");
+	if (empty(is_array) || !is_array($field["value"])) {
+		$field["value"] = ["start" => "", "end" => ""];
 
-		if (!empty($field["options"]["default_today"])) {
+		if (!empty($field["settings"]["default_today"])) {
 			$field["value"]["start"] = date($bigtree["config"]["date_format"]);
 		}
-	} else{
+	} else {
 		if (!empty($field["value"]["start"]) && $field["value"]["start"] != "0000-00-00" && $field["value"]["start"] != "0000-00-00 00:00:00") {
 			$field["value"]["start"] = date($bigtree["config"]["date_format"], strtotime($field["value"]["start"]));
 
